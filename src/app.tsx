@@ -1,13 +1,15 @@
+import { Router } from '@reach/router';
 import * as React from 'react';
 import './configurations/api.interseptor';
-import './app.css';
+import './app.scss';
+import RegistrationPage from './pages/registration';
 
 const App = () => {
 
     return(
-        <div>
-            hello world
-        </div>
+        <Router>
+            <RegistrationPage path='/signUp'/>
+        </Router>
     )
 }
 
