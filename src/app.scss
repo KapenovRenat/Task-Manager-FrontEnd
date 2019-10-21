@@ -1,2 +1,18 @@
+@import "variables";
 
+*{margin: 0px}
 
+input {box-sizing: border-box;}
+
+button {width: 150px;height: 35px;font-size: 16px;background: $colorBlue;border: none;color: $colorWhite;
+  cursor: pointer;
+}
+
+.authorization {display: flex;justify-content: center;height: 100vh;align-items: center;
+  form {width: 320px;padding: 20px; @extend %box-shadow;
+    .form-group {width: 100%; height: 45px; position: relative;margin-bottom: 20px;
+      input {width: 100%; height: 100%;padding-left: 30px}
+      .form-icon {position: absolute; left: 10px;top: 52%;transform: translate(0, -50%);}
+    }
+  }
+}
