@@ -23,6 +23,7 @@
     "@types/react-redux": "^7.0.6",
     "@types/redux-thunk": "^2.1.0",
     "babel-loader": "^8.0.5",
+    "babel-plugin-import": "^1.12.2",
     "clean-webpack-plugin": "^2.0.1",
     "css-loader": "^2.1.1",
     "html-webpack-plugin": "^3.2.0",

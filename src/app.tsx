@@ -1,8 +1,9 @@
 import { Router } from '@reach/router';
 import * as React from 'react';
 import MainComponent from './public/components/main';
-import RegistrationPage from './pages/registration';
+import RegistrationPage from './pages/authorization/registration';
 import './configurations/api.interseptor';
+import 'antd/dist/antd.css';
 import './app.scss';
 
 const App = () => {
