@@ -2,18 +2,11 @@ import { navigate, Router } from '@reach/router';
 import { useEffect, useState } from 'react';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import MainPage from '../../../pages/main';
 import Menu from '../../../public/components/menu';
 import { isAuthorizated } from '../../../public/services/authorization';
 import { itemsFetchDataUser } from '../../../store/actions/user';
 import BigLoader from '../../../public/components/loader';
-
-const About = ({path}: any) => {
-    return (
-        <div className='container'>
-            Renat
-        </div>
-    );
-};
 
 interface IMain {
     path: string;
@@ -42,7 +35,7 @@ const MainComponent = ({path, getUser, isLoading}: IMain) => {
                 <Menu />
                 <div className="container-content">
                     <Router>
-                        <About path='/'/>
+                        <MainPage path='/'/>
                     </Router>
                 </div>
             </div>
