@@ -1,14 +1,7 @@
 import { useState } from 'react';
 import { IUser } from '../../public/Interfaces/user/user';
 
-const InitialUser = {
-    name: '',
-    hash: '',
-    email: '',
-    hashConfirm: '',
-};
-
-export function useUserData() {
+export function useUserData(InitialUser: IUser) {
     let [user, setUser] = useState<IUser>(InitialUser);
 
     let bind = {
