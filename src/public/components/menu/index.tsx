@@ -1,7 +1,9 @@
+import { navigate } from '@reach/router';
 import { Button } from 'antd';
 import * as React from 'react';
 import './styles.scss';
 import { connect } from 'react-redux';
+import { isLogout } from '../../../public/services/authorization';
 import { IUser } from '../../../public/Interfaces/user/user';
 
 interface IMenu {
@@ -9,6 +11,12 @@ interface IMenu {
 }
 
 const Menu = ({user}: IMenu) => {
+
+    const logout = () => {
+        isLogout();
+        navigate('/signIn');
+    };
+
     return (
         <div className='menu'>
             <div className="menu-header">
@@ -21,6 +29,7 @@ const Menu = ({user}: IMenu) => {
                     <Button
                         type="primary"
                         icon="poweroff"
+                        onClick={logout}
                     >LogOut</Button>
                 </div>
             </div>

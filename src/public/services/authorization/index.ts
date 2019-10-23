@@ -21,11 +21,16 @@ const getUserData = async () => {
     return axios.get('/api/user');
 };
 
+const isLogout = () => {
+    localStorage.clear();
+};
+
 
 export {
     signUp,
     signIn,
     saveTokenToLocalStorage,
     isAuthorizated,
-    getUserData
+    getUserData,
+    isLogout
 }

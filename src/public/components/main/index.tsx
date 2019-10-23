@@ -40,9 +40,11 @@ const MainComponent = ({path, getUser, isLoading}: IMain) => {
         return (
             <div className='container'>
                 <Menu />
-                <Router>
-                    <About path='/'/>
-                </Router>
+                <div className="container-content">
+                    <Router>
+                        <About path='/'/>
+                    </Router>
+                </div>
             </div>
         );
     }
