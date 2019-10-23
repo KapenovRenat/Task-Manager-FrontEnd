@@ -7,15 +7,8 @@ import { validator } from '../../../public/services/validation/custom-validation
 import { useUserData } from '../../../public/custom-hooks/custom-hook-form';
 import { IUser } from '../../../public/Interfaces/user/user';
 
-const InitialUser = {
-    name: '',
-    hash: '',
-    email: '',
-    hashConfirm: '',
-};
-
 const RegistrationPage = ({path}: any) => {
-    let [user, bind] = useUserData(InitialUser);
+    let [user, bind] = useUserData();
     let [errors, setErrors] = useState<string[]>([]);
     let [success, setSuccess] = useState<string>('');
     let [loading, setLoading] = useState<boolean>(false);
