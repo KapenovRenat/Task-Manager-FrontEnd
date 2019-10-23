@@ -7,28 +7,31 @@ import { validator } from '../../../public/services/validation/custom-validation
 import { useUserData } from '../../../public/custom-hooks/custom-hook-form';
 import { IUser } from '../../../public/Interfaces/user/user';
 
+const InitialUser = {
+    name: '',
+    hash: '',
+    email: '',
+    hashConfirm: '',
+};
+
 const RegistrationPage = ({path}: any) => {
-    let [user, bind] = useUserData();
+    let [user, bind] = useUserData(InitialUser);
     let [errors, setErrors] = useState<string[]>([]);
     let [success, setSuccess] = useState<string>('');
-    let [loading, setloading] = useState<boolean>(false);
+    let [loading, setLoading] = useState<boolean>(false);
 
     const submit = async (e: any) => {
         e.preventDefault();
         setErrors(validator(user));
-        if (!errors.length){
-            if ((user as IUser).hash !== (user as IUser).hashConfirm){
-                setErrors([...errors, 'Passwords do not match']);
-            } else {
-                setloading(true);
-                try {
-                    const res = await signUp((user as IUser));
-                    setSuccess(res.data.res);
-                    setloading(false);
-                } catch (e) {
-                    setErrors([e.response.data.res]);
-                    setloading(false);
-                }
+        if (!validator(user).length){
+            setLoading(true);
+            try {
+                const res = await signUp((user as IUser));
+                setSuccess(res.data.res);
+                setLoading(false);
+            } catch (e) {
+                setErrors([e.response.data.res]);
+                setLoading(false);
             }
         }
     };
@@ -36,6 +39,7 @@ const RegistrationPage = ({path}: any) => {
     return (
         <div className='authorization'>
             <form onSubmit={submit}>
+                <h2 className="form-title">Sign Up</h2>
                 <div className='form-group'>
                     <Icon className='form-icon' type="mail" style={{ color: 'rgba(0,0,0,.8)' }} />
                     <input

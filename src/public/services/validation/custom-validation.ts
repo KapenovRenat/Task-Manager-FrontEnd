@@ -14,17 +14,23 @@ export const validator = (obj: any) => {
                 break;
             };
             case 'name': {
-                if (obj[item].length === 0){
+                if (obj[item] === ''){
                     errors.push(`${item} is empty`);
                 }
                 break;
             }
             case 'hash': {
-                if (obj[item].length === 0){
+                if (obj[item] === ''){
                     errors.push(`password is empty`);
                 }
                 break;
             };
+            case 'hashConfirm': {
+                if (obj[item] !== obj['hash']) {
+                    errors.push('passwords do not match');
+                }
+                break;
+            }
         }
     });
 
