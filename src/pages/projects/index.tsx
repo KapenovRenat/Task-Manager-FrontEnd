@@ -1,9 +1,10 @@
 import * as React from 'react';
+import MainHeader from '../../public/components/page-header';
 
 const ProjectsPage = ({path}: any) => {
     return (
         <div className='page'>
-            Projects
+            <MainHeader title={'Projects'}/>
         </div>
     );
 }
