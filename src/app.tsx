@@ -1,5 +1,7 @@
 import { Router } from '@reach/router';
 import * as React from 'react';
+import MainPage from './pages/main';
+import ProjectsPage from './pages/projects';
 import LoginPage from './pages/authorization/login';
 import MainComponent from './public/components/main';
 import RegistrationPage from './pages/authorization/registration';
@@ -11,7 +13,10 @@ const App = () => {
     return(
         <div className='app'>
             <Router>
-                <MainComponent path='/'/>
+                <MainComponent path='/'>
+                    <MainPage path='/'/>
+                    <ProjectsPage path='/projects'/>
+                </MainComponent>
                 <LoginPage path='/signIn'/>
                 <RegistrationPage path='/signUp'/>
             </Router>

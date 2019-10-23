@@ -1,8 +1,7 @@
-import { navigate, Router } from '@reach/router';
+import { navigate } from '@reach/router';
 import { useEffect, useState } from 'react';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import MainPage from '../../../pages/main';
 import Menu from '../../../public/components/menu';
 import { isAuthorizated } from '../../../public/services/authorization';
 import { itemsFetchDataUser } from '../../../store/actions/user';
@@ -12,9 +11,10 @@ interface IMain {
     path: string;
     getUser: () => void;
     isLoading: boolean;
+    children: any;
 }
 
-const MainComponent = ({path, getUser, isLoading}: IMain) => {
+const MainComponent = ({path, getUser, isLoading, children }: IMain) => {
 
     useEffect(()=> {
         getUser();
@@ -34,9 +34,7 @@ const MainComponent = ({path, getUser, isLoading}: IMain) => {
             <div className='container'>
                 <Menu />
                 <div className="container-content">
-                    <Router>
-                        <MainPage path='/'/>
-                    </Router>
+                    {children}
                 </div>
             </div>
         );
