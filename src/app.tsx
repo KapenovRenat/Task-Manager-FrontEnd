@@ -11,7 +11,8 @@ const App = () => {
     return(
         <div className='app'>
             <Router>
-                <LoginPage path='/'/>
+                <MainComponent path='/'/>
+                <LoginPage path='/signIn'/>
                 <RegistrationPage path='/signUp'/>
             </Router>
         </div>

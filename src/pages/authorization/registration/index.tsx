@@ -1,7 +1,7 @@
+import * as React from 'react';
+import { useState } from 'react';
 import { Link } from '@reach/router';
 import { Alert, Button, Icon } from 'antd';
-import { useState } from 'react';
-import * as React from 'react';
 import { signUp } from '../../../public/services/authorization';
 import { validator } from '../../../public/services/validation/custom-validation';
 import { useUserData } from '../../../public/custom-hooks/custom-hook-form';
