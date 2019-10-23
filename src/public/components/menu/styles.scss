@@ -1,0 +1,8 @@
+.menu {position: fixed;height: 100%;width: 270px;background: grey;
+  &-header {display: flex; flex-direction: column; align-items: center;margin-top: 20px;
+    h2 {color: #ffffff; text-transform: uppercase;font-size: 18px;margin-bottom: 15px;}
+    &-actions {display: flex; justify-content: space-evenly; width: 100%;
+      button {width: 120px}
+    }
+  }
+}

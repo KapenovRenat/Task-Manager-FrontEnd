@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Link } from '@reach/router';
+import { Link, navigate } from '@reach/router';
 import { Alert, Button, Icon } from 'antd';
 import { saveTokenToLocalStorage, signIn } from '../../../public/services/authorization';
 import { validator } from '../../../public/services/validation/custom-validation';
@@ -26,6 +26,7 @@ const LoginPage = ({path}: any) => {
                 const res = await signIn((user as IUser));
                 await saveTokenToLocalStorage(res.data.suc_token);
                 setLoading(false);
+                navigate('/');
             } catch (e) {
                 setErrors([e.response.data.res]);
                 setLoading(false);

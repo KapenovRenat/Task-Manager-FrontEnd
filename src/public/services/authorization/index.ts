@@ -13,9 +13,19 @@ const saveTokenToLocalStorage = async (token: string) => {
     localStorage.setItem('Token', token);
 };
 
+const isAuthorizated = (): boolean => {
+    return !!localStorage.getItem('Token');
+};
+
+const getUserData = async () => {
+    return axios.get('/api/user');
+};
+
 
 export {
     signUp,
     signIn,
-    saveTokenToLocalStorage
+    saveTokenToLocalStorage,
+    isAuthorizated,
+    getUserData
 }
