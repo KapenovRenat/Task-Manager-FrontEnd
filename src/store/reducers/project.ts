@@ -20,10 +20,18 @@ export function projectIsLoading(state = false, action: any) {
     }
 }
 
-export function projects(state = {}, action: any) {
+interface state {
+    projectsItem: IProject[];
+};
+
+let initialState: state = {
+    projectsItem: []
+};
+
+export function projects(state = initialState, action: any) {
     switch (action.type) {
         case 'PROJECT_FETCH_DATA_SUCCESS':
-            return action.project;
+            return {projectsItem: action.project};
 
         default:
             return state;

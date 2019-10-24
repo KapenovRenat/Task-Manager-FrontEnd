@@ -1,16 +1,31 @@
+import { useEffect } from 'react';
 import * as React from 'react';
+import { connect } from 'react-redux';
+import { projectsFetchData } from '../../store/actions/project';
+import ProjectItemsComponent from '../../pages/projects/components/project-items';
 import ProjectActionsComponent from '../../pages/projects/components/actions';
 import MainHeader from '../../public/components/page-header';
 
 import './styles.scss';
 
-const ProjectsPage = ({path}: any) => {
+const ProjectsPage = ({path, getProjects}: any) => {
+
+    useEffect(() => {
+        getProjects();
+    }, []);
+
     return (
         <div className='page projects'>
             <MainHeader title={'Projects'}/>
             <ProjectActionsComponent />
+            <ProjectItemsComponent />
         </div>
     );
 }
 
-export default ProjectsPage;
+export default connect(
+    (state: any) => ({}),
+    (dispatch: any) => ({
+        getProjects: () => dispatch(projectsFetchData())
+    })
+)(ProjectsPage);

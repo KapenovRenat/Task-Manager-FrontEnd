@@ -8,9 +8,10 @@ import { IProject } from '../../../../public/Interfaces/projects';
 
 interface IProjectActions {
     hasLoading: boolean;
+    getProjects: () => void;
 }
 
-const ProjectActionsComponent = ({hasLoading}: IProjectActions) => {
+const ProjectActionsComponent = ({hasLoading, getProjects}: IProjectActions) => {
     const [modalProject, isModalProject] = useState<boolean>(false);
     const [data, setData] = useState<IProject>();
     const [isLoading, setLoading] = useState<boolean>(false);
@@ -25,6 +26,8 @@ const ProjectActionsComponent = ({hasLoading}: IProjectActions) => {
         try {
             const res = await createProject(data);
             setLoading(false);
+            getProjects();
+            isModalProject(false);
             message.success(res.data.res);
         } catch (e) {
             setLoading(false);
