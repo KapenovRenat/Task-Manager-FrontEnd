@@ -31,7 +31,7 @@ let initialState: state = {
 export function projects(state = initialState, action: any) {
     switch (action.type) {
         case 'PROJECT_FETCH_DATA_SUCCESS':
-            return {projectsItem: action.project};
+            return {projectsItem: !action.project ? [] : action.project};
 
         default:
             return state;

@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import { projectsFetchData } from '../../store/actions/project';
-import ProjectItemsComponent from '../../pages/projects/components/project-items';
+import ProjcetItemsComponent from '../../pages/projects/components/project-items';
 import ProjectActionsComponent from '../../pages/projects/components/actions';
 import MainHeader from '../../public/components/page-header';
 
@@ -18,7 +18,7 @@ const ProjectsPage = ({path, getProjects}: any) => {
         <div className='page projects'>
             <MainHeader title={'Projects'}/>
             <ProjectActionsComponent />
-            <ProjectItemsComponent />
+            <ProjcetItemsComponent />
         </div>
     );
 }
