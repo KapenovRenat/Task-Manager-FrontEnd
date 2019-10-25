@@ -3,12 +3,12 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { IProject } from '../../../../public/Interfaces/projects';
 
-interface InterfaceProjcetItems {
+interface InterfaceProjectItems {
     projects: IProject[];
     isLoading: boolean;
 }
 
-const ProjectItemsComponent = ({projects, isLoading}:InterfaceProjcetItems) => {
+const ProjectItemsComponent = ({projects, isLoading}:InterfaceProjectItems) => {
 
     if (isLoading) {
         return (<Spin size="large" />)
