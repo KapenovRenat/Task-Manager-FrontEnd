@@ -1,17 +1,18 @@
 import * as React from 'react';
 import * as Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import { connect } from 'react-redux';
 import { IProject } from '../../../../public/Interfaces/projects';
 import { ITask } from '../../../../public/Interfaces/tasks';
+
 import './styles.scss';
 
-interface ICharComponent {
-    tasks: ITask[];
+interface IData {
     projects: IProject[];
+    tasks: ITask[];
 }
 
-const CharComponent = ({tasks, projects}: ICharComponent) => {
-
+const CharComponent = ({ projects, tasks }: IData) => {
     const options: Highcharts.Options = {
         chart: {
             plotShadow: false,
@@ -67,4 +68,10 @@ const CharComponent = ({tasks, projects}: ICharComponent) => {
     );
 }
 
-export default CharComponent;
+export default connect(
+    (state: any) => ({
+        projects: state.mainState.projects,
+        tasks: state.mainState.tasks,
+    }),
+    dispatch => ({})
+)(CharComponent);

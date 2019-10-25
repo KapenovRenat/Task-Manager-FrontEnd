@@ -1,31 +1,27 @@
-import { message } from 'antd';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import * as React from 'react';
-import { IProject } from '../../public/Interfaces/projects';
-import { ITask } from '../../public/Interfaces/tasks';
-import { mainGetData } from '../../public/services/main';
+import { connect } from 'react-redux';
+import { mainFecthData } from '../../store/actions/main';
 import CharComponent from '../../pages/main/components/chart';
 import MainHeader from '../../public/components/page-header';
 
-const MainPage = ({path}: any) => {
-    const [tasks, setTasks] = useState<ITask[]>([]);
-    const [projects, setProjects] = useState<IProject[]>([]);
+const MainPage = ({path, getData}: any) => {
 
     useEffect(() => {
-        mainGetData()
-            .then(res => {
-                setTasks(res.data.res.tasks);
-                setProjects(res.data.res.projects);
-            })
-            .catch(e => message.error('sorry try again'))
-    }, []);
+        getData();
+    });
 
     return (
         <div className='page'>
             <MainHeader title={'Main'}/>
-            <CharComponent tasks = {tasks} projects = {projects}/>
+            <CharComponent />
         </div>
     );
 }
 
-export default MainPage;
+export default connect(
+    (state: any) => ({}),
+    dispatch => ({
+        getData: () => dispatch(mainFecthData())
+    })
+)(MainPage);
