@@ -22,11 +22,11 @@ export function projectsFetchDataSuccess(project: IProject[]) {
     };
 }
 
-export function projectsFetchData() {
+export function projectsFetchData(ischecked: boolean = false) {
     return (dispatch: any) => {
         dispatch(projectsIsLoading(true));
 
-        getProjects()
+        getProjects(ischecked)
             .then(res => {
                 dispatch(projectsIsLoading(false));
                 return res.data;

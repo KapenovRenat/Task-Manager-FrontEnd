@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { IProject } from '../../../public/Interfaces/projects';
 
-const getProjects = async () => {
-    return axios.get('/api/project');
+const getProjects = async (isPrivate: boolean = false) => {
+    return axios.get('/api/project',{
+        params: {isPrivate}
+    });
 };
 
 const getProject = async (id: string) => {

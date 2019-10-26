@@ -1,4 +1,4 @@
-import { Button, message, Modal } from 'antd';
+import { Button, Checkbox, message, Modal } from 'antd';
 import { useState } from 'react';
 import * as React from 'react';
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import { IProject } from '../../../../public/Interfaces/projects';
 
 interface IProjectActions {
     hasLoading: boolean;
-    getProjects: () => void;
+    getProjects: (isChecked: boolean) => void;
 }
 
 const ProjectActionsComponent = ({hasLoading, getProjects}: IProjectActions) => {
@@ -21,12 +21,16 @@ const ProjectActionsComponent = ({hasLoading, getProjects}: IProjectActions) => 
         setData({ ...data, [name]: value });
     };
 
+    const filteredProjects = (e: any) => {
+        getProjects(e.target.checked);
+    };
+
     const submit = async () => {
         setLoading(true);
         try {
             const res = await createProject(data);
             setLoading(false);
-            getProjects();
+            getProjects(false);
             isModalProject(false);
             message.success(res.data.res);
         } catch (e) {
@@ -38,6 +42,7 @@ const ProjectActionsComponent = ({hasLoading, getProjects}: IProjectActions) => 
     return (
         <div className='projects-actions'>
             <Button type='primary' onClick={()=> isModalProject(true)}>New Project</Button>
+            <Checkbox onChange={filteredProjects} style={{marginLeft: '20px'}}>Just private projects</Checkbox>
             <Modal
                 title='Create Project'
                 visible={modalProject}
@@ -59,6 +64,6 @@ export default connect(
         hasLoading: state.projectIsLoading
     }),
     (dispatch: any) => ({
-        getProjects: () => dispatch(projectsFetchData())
+        getProjects: (isChecked: boolean) => dispatch(projectsFetchData(isChecked))
     })
 )(ProjectActionsComponent);
