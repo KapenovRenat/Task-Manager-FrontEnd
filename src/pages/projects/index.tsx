@@ -8,7 +8,7 @@ import MainHeader from '../../public/components/page-header';
 
 import './styles.scss';
 
-const ProjectsPage = ({path, getProjects}: any) => {
+const ProjectsPage = ({path, getProjects, project}: any) => {
 
     useEffect(() => {
         getProjects();
@@ -24,7 +24,9 @@ const ProjectsPage = ({path, getProjects}: any) => {
 }
 
 export default connect(
-    (state: any) => ({}),
+    (state: any) => ({
+        project: state.project.project
+    }),
     (dispatch: any) => ({
         getProjects: () => dispatch(projectsFetchData())
     })

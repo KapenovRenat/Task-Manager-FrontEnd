@@ -37,7 +37,7 @@ const ProjectItemsComponent = ({projects, isLoading}:InterfaceProjectItems) => {
 export default connect(
     (state: any) => ({
         projects: state.projects.projectsItem,
-        isLoading: state.projectIsLoading
+        isLoading: state.projectsIsLoading
     }),
     (dispatch: any) => ({
     })

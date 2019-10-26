@@ -11,7 +11,7 @@ const initialState: IState = {
     tasks: []
 };
 
-export function MainIsLoading(state = false, action:any){
+export function MainIsLoading(state = true, action:any){
     switch(action.type){
         case 'MAIN_IS_LOADING': return action.isLoading;
         default: return state;

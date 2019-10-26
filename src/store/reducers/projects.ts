@@ -2,7 +2,7 @@ import { IProject } from '../../public/Interfaces/projects';
 
 export function projectsHasErrored(state = false, action: any) {
     switch (action.type) {
-        case 'PROJECT_HAS_ERRORED':
+        case 'PROJECTS_HAS_ERRORED':
             return action.hasErrored;
 
         default:
@@ -10,9 +10,9 @@ export function projectsHasErrored(state = false, action: any) {
     }
 }
 
-export function projectsIsLoading(state = false, action: any) {
+export function projectsIsLoading(state = true, action: any) {
     switch (action.type) {
-        case 'PROJECT_IS_LOADING':
+        case 'PROJECTS_IS_LOADING':
             return action.isLoading;
 
         default:
@@ -30,7 +30,7 @@ let initialState: state = {
 
 export function projects(state = initialState, action: any) {
     switch (action.type) {
-        case 'PROJECT_FETCH_DATA_SUCCESS':
+        case 'PROJECTS_FETCH_DATA_SUCCESS':
             return {projectsItem: action.project};
 
         default:
