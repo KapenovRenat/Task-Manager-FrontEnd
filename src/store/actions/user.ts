@@ -28,11 +28,10 @@ export function itemsFetchDataUser() {
 
         getUserData()
             .then(res => {
-                dispatch(userIsLoading(false));
-                return res.data;
+                dispatch(userFetchDataSuccess(res.data.res));
             })
             .then(res => {
-                dispatch(userFetchDataSuccess(res.res));
+                dispatch(userIsLoading(false));
             })
             .catch(e => {
                 dispatch(userHasErrored(true));

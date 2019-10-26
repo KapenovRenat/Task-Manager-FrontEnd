@@ -7,11 +7,10 @@ import { createProject } from '../../../../public/services/project';
 import { IProject } from '../../../../public/Interfaces/projects';
 
 interface IProjectActions {
-    hasLoading: boolean;
     getProjects: (isChecked: boolean) => void;
 }
 
-const ProjectActionsComponent = ({hasLoading, getProjects}: IProjectActions) => {
+const ProjectActionsComponent = ({getProjects}: IProjectActions) => {
     const [modalProject, isModalProject] = useState<boolean>(false);
     const [data, setData] = useState<IProject>();
     const [isLoading, setLoading] = useState<boolean>(false);

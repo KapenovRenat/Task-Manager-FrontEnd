@@ -17,7 +17,11 @@ const ProjectPage = ({ path, getProjectData, id, project, isLoading, cleaStore }
 
 
     if (isLoading) {
-        return (<Spin size="large" />)
+        return (
+            <div className='spin-block'>
+                <Spin size="large" />
+            </div>
+        )
     } else {
         return (
             <div className='page project'>

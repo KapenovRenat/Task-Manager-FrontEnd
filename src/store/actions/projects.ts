@@ -28,11 +28,10 @@ export function projectsFetchData(ischecked: boolean = false) {
 
         getProjects(ischecked)
             .then(res => {
-                dispatch(projectsIsLoading(false));
-                return res.data;
+                dispatch(projectsFetchDataSuccess(res.data.res));
             })
             .then(res => {
-                dispatch(projectsFetchDataSuccess(res.res));
+                dispatch(projectsIsLoading(false));
             })
             .catch(e => {
                 dispatch(projectsHasErrored(true));

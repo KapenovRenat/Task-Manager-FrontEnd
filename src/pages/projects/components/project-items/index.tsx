@@ -16,7 +16,11 @@ const ProjectItemsComponent = ({projects, isLoading}:InterfaceProjectItems) => {
     };
 
     if (isLoading) {
-        return (<Spin size="large" />)
+        return (
+            <div className='spin-block'>
+                <Spin size="large" />
+            </div>
+        )
     } else {
         return (
             <div className='projects-items'>

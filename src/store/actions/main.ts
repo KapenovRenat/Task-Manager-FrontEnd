@@ -28,11 +28,10 @@ export function mainFecthData(): any {
 
         mainGetData()
             .then(res => {
-                dispatch(mainIsLoading(true));
-                return res.data
+                dispatch(mainFetchDataSuccess(res.data.res));
             })
             .then(res => {
-                dispatch(mainFetchDataSuccess(res.res));
+                dispatch(mainIsLoading(true));
             })
             .catch(e => {
                 dispatch(mainHasErrored(true));
