@@ -15,8 +15,13 @@ const createProject = async (data: IProject) => {
     return axios.post('/api/project', data);
 };
 
+const deletProject = async (id: string) => {
+    return axios.delete(`/api/project/${id}`);
+};
+
 export {
     getProjects,
     createProject,
-    getProject
+    getProject,
+    deletProject
 }
