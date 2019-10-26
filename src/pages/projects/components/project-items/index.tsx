@@ -1,3 +1,4 @@
+import { navigate } from '@reach/router';
 import { Card, Empty, Spin } from 'antd';
 import * as React from 'react';
 import { connect } from 'react-redux';
@@ -10,6 +11,10 @@ interface InterfaceProjectItems {
 
 const ProjectItemsComponent = ({projects, isLoading}:InterfaceProjectItems) => {
 
+    const goProject = (id: string) => {
+        navigate(`/project/${id}`);
+    };
+
     if (isLoading) {
         return (<Spin size="large" />)
     } else {
@@ -18,7 +23,7 @@ const ProjectItemsComponent = ({projects, isLoading}:InterfaceProjectItems) => {
                 {
                     !projects.length ? <Empty /> :
                         projects.map((item: IProject) =>
-                            <Card style={{ width: 300 }} key={item._id}>
+                            <Card style={{ width: 300 }} key={item._id} onClick={()=>goProject(item._id)}>
                                 <p>Name: {item.name}</p>
                                 <p>Author: {(item.author as any).name}</p>
                             </Card>

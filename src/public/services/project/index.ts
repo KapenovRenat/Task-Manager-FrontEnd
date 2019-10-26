@@ -5,11 +5,16 @@ const getProjects = async () => {
     return axios.get('/api/project');
 };
 
+const getProject = async (id: string) => {
+    return axios.get(`/api/project/${id}`);
+};
+
 const createProject = async (data: IProject) => {
     return axios.post('/api/project', data);
 };
 
 export {
     getProjects,
-    createProject
+    createProject,
+    getProject
 }

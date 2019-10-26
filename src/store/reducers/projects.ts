@@ -1,6 +1,6 @@
 import { IProject } from '../../public/Interfaces/projects';
 
-export function projectHasErrored(state = false, action: any) {
+export function projectsHasErrored(state = false, action: any) {
     switch (action.type) {
         case 'PROJECT_HAS_ERRORED':
             return action.hasErrored;
@@ -10,7 +10,7 @@ export function projectHasErrored(state = false, action: any) {
     }
 }
 
-export function projectIsLoading(state = false, action: any) {
+export function projectsIsLoading(state = false, action: any) {
     switch (action.type) {
         case 'PROJECT_IS_LOADING':
             return action.isLoading;

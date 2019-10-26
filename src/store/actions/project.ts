@@ -1,6 +1,3 @@
-import { getProjects } from '../../public/services/project';
-import { IProject } from '../../public/Interfaces/projects';
-
 export function projectHasErrored(bool: boolean) {
     return {
         type: 'PROJECT_HAS_ERRORED',

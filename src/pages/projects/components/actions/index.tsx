@@ -2,7 +2,7 @@ import { Button, message, Modal } from 'antd';
 import { useState } from 'react';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { projectsFetchData } from '../../../../store/actions/project';
+import { projectsFetchData } from '../../../../store/actions/projects';
 import { createProject } from '../../../../public/services/project';
 import { IProject } from '../../../../public/Interfaces/projects';
 

@@ -1,5 +1,6 @@
 import { Router } from '@reach/router';
 import * as React from 'react';
+import ProjectPage from './pages/project';
 import MainPage from './pages/main';
 import ProjectsPage from './pages/projects';
 import LoginPage from './pages/authorization/login';
@@ -15,7 +16,8 @@ const App = () => {
             <Router>
                 <MainComponent path='/'>
                     <MainPage path='/'/>
-                    <ProjectsPage path='/projects'/>
+                    <ProjectsPage path='/projects' />
+                    <ProjectPage path='/project/:id' />
                 </MainComponent>
                 <LoginPage path='/signIn'/>
                 <RegistrationPage path='/signUp'/>
