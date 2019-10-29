@@ -37,9 +37,9 @@ const LoginPage = ({path}: any) => {
     return (
         <div className='authorization'>
             <form onSubmit={submit}>
-                <h2 className="form-title">Sign In</h2>
+                <h2 className='form-title'>Sign In</h2>
                 <div className='form-group'>
-                    <Icon className='form-icon' type="mail" style={{ color: 'rgba(0,0,0,.8)' }} />
+                    <Icon className='form-icon' type='mail' style={{ color: 'rgba(0,0,0,.8)' }} />
                     <input
                         placeholder='Email'
                         name='email'
@@ -56,7 +56,7 @@ const LoginPage = ({path}: any) => {
                     />
                 </div>
                 {
-                    errors.map((item: string, index: number) =>  <Alert message={item} key={index} style={{marginBottom: '20px'}} type="error" showIcon />)
+                    errors.map((item: string, index: number) =>  <Alert message={item} key={index} style={{marginBottom: '20px'}} type='error' showIcon />)
                 }
                 <div className='form-buttons'>
                     <Button type='primary' htmlType='submit' loading={loading}>

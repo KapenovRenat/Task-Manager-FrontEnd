@@ -19,9 +19,9 @@ const MenuItems = ({user}: any) => {
     return (
         <div className='menu-items'>
             <ul>
-                <li className={activePage(1)} onClick={()=>changePage(1, '/')}><Icon type="dashboard" />Main</li>
-                {user.isActivate && <li className={activePage(2)} onClick={()=>changePage(2, '/projects')}><Icon type="file-protect" />Projects</li>}
-                {user.isActivate &&<li className={activePage(3)} onClick={()=>changePage(3, '/users')}><Icon type="user" />Users</li>}
+                <li className={activePage(1)} onClick={()=>changePage(1, '/')}><Icon type='dashboard' />Main</li>
+                {user.isActivate && <li className={activePage(2)} onClick={()=>changePage(2, '/projects')}><Icon type='file-protect' />Projects</li>}
+                {user.isActivate &&<li className={activePage(3)} onClick={()=>changePage(3, '/users')}><Icon type='user' />Users</li>}
                 {!user.isActivate &&<li>Activate your account!</li>}
             </ul>
         </div>

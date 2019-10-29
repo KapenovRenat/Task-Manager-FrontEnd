@@ -16,16 +16,16 @@ const MenuHeader = ({user}: IMenuHeader) => {
     };
 
     return (
-        <div className="menu-header">
+        <div className='menu-header'>
             <h2>{user.email}</h2>
-            <div className="menu-header-actions">
+            <div className='menu-header-actions'>
                 <Button
-                    type="primary"
-                    icon="setting"
+                    type='primary'
+                    icon='setting'
                 >Settings</Button>
                 <Button
-                    type="primary"
-                    icon="poweroff"
+                    type='primary'
+                    icon='poweroff'
                     onClick={logout}
                 >LogOut</Button>
             </div>

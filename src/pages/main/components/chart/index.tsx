@@ -54,11 +54,11 @@ const CharComponent = ({ projects, tasks }: IData) => {
 
     return (
         <div className='main-chart'>
-            <div className="main-chart-item">
+            <div className='main-chart-item'>
                 <p>Projects  - <span className='red'>{Number(`${projects.length}.00`).toFixed(2)}</span></p>
                 <p>Tasks in projects - <span className='blue'>{Number(`${tasks.length}.00`).toFixed(2)}</span></p>
             </div>
-            <div className="main-chart-item">
+            <div className='main-chart-item'>
                 <HighchartsReact
                     highcharts={Highcharts}
                     options={options}

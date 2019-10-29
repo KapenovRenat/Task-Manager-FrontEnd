@@ -35,7 +35,7 @@ const ProjectItemsComponent = ({projects, isLoading, getProjects, user}:Interfac
     if (isLoading) {
         return (
             <div className='spin-block'>
-                <Spin size="large" />
+                <Spin size='large' />
             </div>
         )
     } else {
@@ -52,10 +52,10 @@ const ProjectItemsComponent = ({projects, isLoading, getProjects, user}:Interfac
                                     {
                                         user._id === (item.author as any)._id &&
                                         <Popconfirm
-                                            title="Are you sure delete this project?"
+                                            title='Are you sure delete this project?'
                                             onConfirm={() => deleteProject(item._id)}
-                                            okText="Yes"
-                                            cancelText="No"
+                                            okText='Yes'
+                                            cancelText='No'
                                         >
                                             <Button type='primary'>Delete</Button>
                                         </Popconfirm>

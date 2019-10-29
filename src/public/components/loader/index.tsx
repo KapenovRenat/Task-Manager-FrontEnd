@@ -4,7 +4,7 @@ import * as React from 'react';
 const BigLoader = () => {
     return (
         <div className='big-loader'>
-            <Spin size="large" />
+            <Spin size='large' />
         </div>
     );
 };

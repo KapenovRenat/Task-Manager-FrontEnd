@@ -51,8 +51,8 @@ const ProjectActionsComponent = ({getProjects}: IProjectActions) => {
                 onCancel={()=> isModalProject(false)}
                 confirmLoading={isLoading}
             >
-                <div className="form-group">
-                    <input type="text" placeholder='Project name' name='name' onChange={onChangeData}/>
+                <div className='form-group'>
+                    <input type='text' placeholder='Project name' name='name' onChange={onChangeData}/>
                 </div>
             </Modal>
         </div>

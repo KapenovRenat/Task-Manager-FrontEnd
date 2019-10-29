@@ -33,7 +33,7 @@ const MainComponent = ({path, getUser, isLoading, children }: IMain) => {
         return (
             <div className='container'>
                 <Menu />
-                <div className="container-content">
+                <div className='container-content'>
                     {children}
                 </div>
             </div>
