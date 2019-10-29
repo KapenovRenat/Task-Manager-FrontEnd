@@ -2,12 +2,14 @@ import { Button, Checkbox, message, Modal } from 'antd';
 import { useState } from 'react';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { IUser } from '../../../../public/Interfaces/user/user';
 import { projectsFetchData } from '../../../../store/actions/projects';
 import { createProject } from '../../../../public/services/project';
 import { IProject } from '../../../../public/Interfaces/projects';
 
 interface IProjectActions {
     getProjects: (isChecked: boolean) => void;
+    user: IUser;
 }
 
 const ProjectActionsComponent = ({getProjects}: IProjectActions) => {
@@ -60,7 +62,8 @@ const ProjectActionsComponent = ({getProjects}: IProjectActions) => {
 export default connect(
     (state: any) => ({
         hasError: state.projectHasErrored,
-        hasLoading: state.projectIsLoading
+        hasLoading: state.projectIsLoading,
+        user: state.user
     }),
     (dispatch: any) => ({
         getProjects: (isChecked: boolean) => dispatch(projectsFetchData(isChecked))
