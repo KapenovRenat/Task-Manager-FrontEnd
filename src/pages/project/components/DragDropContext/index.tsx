@@ -9,8 +9,10 @@ const DragDropContexComponent = () => {
     const onDragStart = useCallback((e: any) => {
         console.log(e)
     }, []);
+
     const onDragUpdate = useCallback((e: any) => {
     }, []);
+
     const onDragEnd = useCallback((e: any) => {
     }, []);
 

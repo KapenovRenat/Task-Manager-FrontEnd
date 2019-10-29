@@ -1,7 +1,7 @@
 export interface ITask {
-    _id: string;
+    _id?: string;
     name: string;
-    project_id: string;
+    project_id?: string;
     user_id: string;
-    status_id: number;
+    status_id?: number;
 }

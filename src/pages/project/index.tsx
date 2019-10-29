@@ -26,7 +26,7 @@ const ProjectPage = ({ path, getProjectData, id, project, isLoading, cleaStore }
     } else {
         return (
             <div className='page project'>
-                <HeaderProject name={project.name}/>
+                <HeaderProject project={project}/>
                 <DragDropContexComponent/>
             </div>
         );

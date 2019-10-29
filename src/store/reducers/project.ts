@@ -56,6 +56,18 @@ export function projectClean(state = initialState, action: any) {
     }
 }
 
+export function upadteTask(state = initialState, action: any) {
+    switch (action.type) {
+        case 'TASK_FETCH_DATA_SUCCESS':
+            return {
+                ...state,
+                tasks: action.data
+            };
+        default:
+            return state;
+    }
+}
+
 export function project(state = initialState, action: any) {
     switch (action.type) {
         case 'PROJECT_FETCH_DATA_SUCCESS':
