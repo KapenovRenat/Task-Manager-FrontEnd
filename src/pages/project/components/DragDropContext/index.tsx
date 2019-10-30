@@ -1,10 +1,13 @@
+import { message } from 'antd';
 import { useCallback } from 'react';
 import * as React from 'react';
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 import { connect } from 'react-redux';
 import './styles.scss';
+import { tasksFetchData } from '../../../../store/actions/project';
+import { updateTask } from '../../../../public/services/task';
 
-const DragDropContexComponent = ({tasks}: any) => {
+const DragDropContexComponent = ({tasks, getTasks, project}: any) => {
     const onBeforeDragStart = useCallback((e: any) => {
     }, []);
 
@@ -14,9 +17,40 @@ const DragDropContexComponent = ({tasks}: any) => {
     const onDragUpdate = useCallback((e: any) => {
     }, []);
 
-    const onDragEnd = useCallback((e: any) => {
+    const onDragEnd = useCallback(async (e: any) => {
         const { destination,  draggableId, source } = e;
-        console.log(draggableId);
+
+        if (destination.droppableId !== source.droppableId) {
+            if (destination.droppableId === 'doing') {
+                try {
+                    let res = await updateTask(draggableId, {status_id: 1});
+                    getTasks(project._id);
+                    message.success(res.data.res);
+                } catch (e) {
+                    message.error('sorry')
+                }
+            }
+
+            if (destination.droppableId === 'close') {
+                try {
+                    let res = await updateTask(draggableId, {status_id: 2});
+                    getTasks(project._id);
+                    message.success(res.data.res);
+                } catch (e) {
+                    message.error('sorry')
+                }
+            }
+
+            if (destination.droppableId === 'open') {
+                try {
+                    let res = await updateTask(draggableId, {status_id: 0});
+                    getTasks(project._id);
+                    message.success(res.data.res);
+                } catch (e) {
+                    message.error('sorry')
+                }
+            }
+        }
     }, []);
 
     return (
@@ -37,20 +71,24 @@ const DragDropContexComponent = ({tasks}: any) => {
                         >
                             <div className="dnd-column-header">To Do</div>
                             {
-                                tasks.map((item: any, index: number) =>
-                                    <Draggable draggableId={item._id} index={index} key={index}>
-                                        {(provided, snapshot) => (
-                                            <div
-                                                ref={provided.innerRef}
-                                                {...provided.draggableProps}
-                                                {...provided.dragHandleProps}
-                                                className='dnd-column-item'
-                                            >
-                                                <h4>{item.name}</h4>
-                                            </div>
-                                        )}
-                                    </Draggable>
-                                )
+                                tasks.map((item: any, index: number) => {
+                                    if (item.status_id === 0) {
+                                        return (
+                                            <Draggable draggableId={item._id} index={index} key={index}>
+                                                {(provided, snapshot) => (
+                                                    <div
+                                                        ref={provided.innerRef}
+                                                        {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                        className='dnd-column-item'
+                                                    >
+                                                        <h4>{item.name}</h4>
+                                                    </div>
+                                                )}
+                                            </Draggable>
+                                        )
+                                    }
+                                })
                             }
                         </div>
                     )}
@@ -64,18 +102,26 @@ const DragDropContexComponent = ({tasks}: any) => {
                             className='dnd-column'
                         >
                             <div className="dnd-column-header">Doing</div>
-                            <Draggable draggableId='draggable-2' index={1}>
-                                {(provided, snapshot) => (
-                                    <div
-                                        ref={provided.innerRef}
-                                        {...provided.draggableProps}
-                                        {...provided.dragHandleProps}
-                                        className='dnd-column-item'
-                                    >
-                                        <h4>My draggable2</h4>
-                                    </div>
-                                )}
-                            </Draggable>
+                            {
+                                tasks.map((item: any, index: number) => {
+                                    if (item.status_id === 1) {
+                                        return (
+                                            <Draggable draggableId={item._id} index={index} key={index}>
+                                                {(provided, snapshot) => (
+                                                    <div
+                                                        ref={provided.innerRef}
+                                                        {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                        className='dnd-column-item'
+                                                    >
+                                                        <h4>{item.name}</h4>
+                                                    </div>
+                                                )}
+                                            </Draggable>
+                                        )
+                                    }
+                                })
+                            }
                         </div>
                     )}
                 </Droppable>
@@ -88,17 +134,26 @@ const DragDropContexComponent = ({tasks}: any) => {
                             className='dnd-column'
                         >
                             <div className="dnd-column-header">Done</div>
-                            {/*<Draggable draggableId='draggable-3' index={1}>*/}
-                            {/*    {(provided, snapshot) => (*/}
-                            {/*        <div*/}
-                            {/*            ref={provided.innerRef}*/}
-                            {/*            {...provided.draggableProps}*/}
-                            {/*            {...provided.dragHandleProps}*/}
-                            {/*        >*/}
-                            {/*            <h4>My draggable2</h4>*/}
-                            {/*        </div>*/}
-                            {/*    )}*/}
-                            {/*</Draggable>*/}
+                            {
+                                tasks.map((item: any, index: number) => {
+                                    if (item.status_id === 2) {
+                                        return (
+                                            <Draggable draggableId={item._id} index={index} key={index}>
+                                                {(provided, snapshot) => (
+                                                    <div
+                                                        ref={provided.innerRef}
+                                                        {...provided.draggableProps}
+                                                        {...provided.dragHandleProps}
+                                                        className='dnd-column-item'
+                                                    >
+                                                        <h4>{item.name}</h4>
+                                                    </div>
+                                                )}
+                                            </Draggable>
+                                        )
+                                    }
+                                })
+                            }
                         </div>
                     )}
                 </Droppable>
@@ -112,6 +167,6 @@ export default connect(
         tasks: state.project.tasks
     }),
     dispatch => ({
-
+        getTasks: (id: string) => dispatch(tasksFetchData(id))
     })
 )(DragDropContexComponent);

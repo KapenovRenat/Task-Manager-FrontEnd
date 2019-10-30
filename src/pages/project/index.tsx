@@ -6,7 +6,7 @@ import DragDropContexComponent from '../../pages/project/components/DragDropCont
 import { projectFetchData } from '../../store/actions/project';
 import HeaderProject from './components/header';
 
-const ProjectPage = ({ path, getProjectData, id, project, isLoading, cleaStore }: any) => {
+const ProjectPage = ({ path, getProjectData, id, project, isLoading }: any) => {
 
     useEffect(() => {
         getProjectData(id);
@@ -23,7 +23,7 @@ const ProjectPage = ({ path, getProjectData, id, project, isLoading, cleaStore }
         return (
             <div className='page project'>
                 <HeaderProject project={project}/>
-                <DragDropContexComponent/>
+                <DragDropContexComponent project = {project}/>
             </div>
         );
     }

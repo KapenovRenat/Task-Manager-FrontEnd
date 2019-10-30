@@ -2,7 +2,7 @@ import { navigate } from '@reach/router';
 import { Button, Card, Empty, message, Popconfirm, Spin } from 'antd';
 import * as React from 'react';
 import { connect } from 'react-redux';
-import { isAccess } from '../../../../public/services/validation/custom-validation';
+import { isAccess } from '../../../../public/services/access-controll';
 import { IUser } from '../../../../public/Interfaces/user/user';
 import { projectsFetchData } from '../../../../store/actions/projects';
 import { deletProject } from '../../../../public/services/project';

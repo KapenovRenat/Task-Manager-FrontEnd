@@ -9,7 +9,12 @@ const getTasks = async (project_id: string) => {
    return axios.get(`/api/project/${project_id}/tasks`);
 };
 
+const updateTask = async (id: string, data: any) => {
+    return axios.put(`/api/project/task/${id}`, data);
+};
+
 export {
     createTask,
-    getTasks
+    getTasks,
+    updateTask
 }
