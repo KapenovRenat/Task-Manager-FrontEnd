@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
-import { project, projectClean, projectHasErrored, projectIsLoading, upadteTask, } from '../../store/reducers/project';
+import { project, projectHasErrored, projectIsLoading } from '../../store/reducers/project';
 import { projectsHasErrored, projectsIsLoading, projects } from '../../store/reducers/projects';
 import { user, userHasErrored, userIsLoading } from '../../store/reducers/user';
 import { MainHasErrored, MainIsLoading, mainState } from './main';
 
 export const mainReducer = combineReducers({
-    projectClean,
     projectHasErrored,
     projectIsLoading,
     project,
@@ -21,5 +20,4 @@ export const mainReducer = combineReducers({
     projectsHasErrored,
     projectsIsLoading,
     projects,
-    upadteTask
 });

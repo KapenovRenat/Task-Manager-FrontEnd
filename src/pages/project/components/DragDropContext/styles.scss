@@ -1,1 +1,12 @@
-.dnd-column {}
+.context-dnd {display: flex; justify-content: space-around;}
+.dnd-column {width: 400px;height: 450px;overflow: hidden;overflow-y: scroll;
+  border: 1px solid #4a76a8; padding: 0px 20px;
+
+  &-header {font-size: 22px; border-bottom: 1px solid #4a76a8; text-align: center;
+    padding: 10px 0px;background: #ffffff;margin-top: 10px;font-weight: 800;
+  }
+
+  &-item {width: 100%; font-size: 20px; margin: 10px 0px; background: #ffffff;
+    border: 1px solid #4a76a8; text-align: center; height: 60px; line-height: 60px;
+  }
+}

@@ -46,33 +46,15 @@ export function projectIsLoading(state = true, action: any) {
     }
 }
 
-export function projectClean(state = initialState, action: any) {
+export function project(state = initialState, action: any) {
     switch (action.type) {
-        case 'PROJECT_IS_CLEAN':
-            return action.clean;
-
-        default:
-            return state;
-    }
-}
-
-export function upadteTask(state = initialState, action: any) {
-    switch (action.type) {
+        case 'PROJECT_FETCH_DATA_SUCCESS':
+            return action.data;
         case 'TASK_FETCH_DATA_SUCCESS':
             return {
                 ...state,
                 tasks: action.data
             };
-        default:
-            return state;
-    }
-}
-
-export function project(state = initialState, action: any) {
-    switch (action.type) {
-        case 'PROJECT_FETCH_DATA_SUCCESS':
-            return action.data;
-
         default:
             return state;
     }

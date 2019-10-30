@@ -1,4 +1,4 @@
-import { createTask } from '../../public/services/task';
+import { createTask, getTasks } from '../../public/services/task';
 import { IUser } from '../../public/Interfaces/user/user';
 import { ITask } from '../../public/Interfaces/tasks';
 import { getProject } from '../../public/services/project';
@@ -44,13 +44,6 @@ export function tasksFetchDataSuccess(data: ITask[]) {
     };
 }
 
-export function projectClean() {
-    return {
-        type: 'PROJECT_IS_CLEAN',
-        clean: {}
-    }
-}
-
 export function projectFetchData(id: string): any {
     return (dispatch: any) => {
         dispatch(projectIsLoading(true));
@@ -68,15 +61,14 @@ export function projectFetchData(id: string): any {
     };
 }
 
-// export function tasksFetchData(id: string, data: ITask): any {
-//     return (dispatch: any) => {
-//         createTask(id, data)
-//             .then(res => {
-//                 console.log(res);
-//                 // dispatch(tasksFetchDataSuccess(res.data.res));
-//             })
-//             .catch(e => {
-//                 dispatch(projectHasErrored(true));
-//             })
-//     };
-// }
+export function tasksFetchData(id: string): any {
+    return (dispatch: any) => {
+        getTasks(id)
+            .then(res => {
+                dispatch(tasksFetchDataSuccess(res.data.res));
+            })
+            .catch(e => {
+                dispatch(projectHasErrored(true));
+            })
+    };
+}

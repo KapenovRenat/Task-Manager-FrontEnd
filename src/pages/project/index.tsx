@@ -3,17 +3,13 @@ import { useEffect } from 'react';
 import * as React from 'react';
 import { connect } from 'react-redux';
 import DragDropContexComponent from '../../pages/project/components/DragDropContext';
-import { projectClean, projectFetchData } from '../../store/actions/project';
+import { projectFetchData } from '../../store/actions/project';
 import HeaderProject from './components/header';
 
 const ProjectPage = ({ path, getProjectData, id, project, isLoading, cleaStore }: any) => {
 
     useEffect(() => {
         getProjectData(id);
-
-        return () => {
-            cleaStore();
-        }
     }, []);
 
 
@@ -40,6 +36,5 @@ export default connect(
     }),
     dispatch => ({
         getProjectData: (id: string) => dispatch(projectFetchData(id)),
-        cleaStore: () => dispatch(projectClean())
     })
 )(ProjectPage);

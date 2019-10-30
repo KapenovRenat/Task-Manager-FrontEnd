@@ -3,16 +3,18 @@ import { Button, message, Modal } from 'antd';
 import { useState } from 'react';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { tasksFetchData } from '../../../../store/actions/project';
 import { createTask } from '../../../../public/services/task';
 import { IUser } from '../../../../public/Interfaces/user/user';
 import { ITask } from '../../../../public/Interfaces/tasks';
 
 interface IHeaderProject {
     project: any;
-    user: IUser
+    user: IUser;
+    getTasks: (id: string) => void;
 }
 
-const HeaderProject = ({project, user}:IHeaderProject) => {
+const HeaderProject = ({project, user, getTasks}:IHeaderProject) => {
     const [modalProject, isModalProject] = useState<boolean>(false);
     const [data, setData] = useState<ITask>();
     const [isLoading, setLoading] = useState<boolean>(false);
@@ -33,9 +35,10 @@ const HeaderProject = ({project, user}:IHeaderProject) => {
             user_id: user._id
         };
         try {
+            const res = await createTask(project._id, task);
             setLoading(false);
             isModalProject(false);
-            const res = await createTask(project._id, task);
+            getTasks(project._id);
             message.success(res.data.res);
         } catch (e) {
             setLoading(false);
@@ -73,5 +76,7 @@ export default connect(
     (state: any) => ({
         user: state.user
     }),
-    dispatch => ({})
+    dispatch => ({
+        getTasks: (id: string) => dispatch(tasksFetchData(id))
+    })
 )(HeaderProject);
