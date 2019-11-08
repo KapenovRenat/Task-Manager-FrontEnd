@@ -1,5 +1,3 @@
-import { ISub } from '../../../public/Interfaces/projects';
-
 export const validator = (obj: any) => {
     let errors: string[] = [];
     Object.keys(obj).forEach((item:string) => {
