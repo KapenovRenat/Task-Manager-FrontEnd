@@ -43,7 +43,7 @@ const ProjectActionsComponent = ({getProjects}: IProjectActions) => {
     return (
         <div className='projects-actions'>
             <Button type='primary' onClick={()=> isModalProject(true)}>New Project</Button>
-            <Checkbox onChange={filteredProjects} style={{marginLeft: '20px'}}>Just private projects</Checkbox>
+            <Checkbox onChange={filteredProjects} style={{marginLeft: '20px'}}>Private projects only</Checkbox>
             <Modal
                 title='Create Project'
                 visible={modalProject}

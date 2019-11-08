@@ -19,7 +19,8 @@ const DragDropContexComponent = ({tasks, getTasks, project}: any) => {
 
     const onDragEnd = useCallback(async (e: any) => {
         const { destination,  draggableId, source } = e;
-
+        // const task = tasks.find((item: any) => item._id === draggableId);
+        // console.log(task);
         if (destination.droppableId !== source.droppableId) {
             if (destination.droppableId === 'doing') {
                 try {
@@ -82,7 +83,10 @@ const DragDropContexComponent = ({tasks, getTasks, project}: any) => {
                                                         {...provided.dragHandleProps}
                                                         className='dnd-column-item'
                                                     >
-                                                        <h4>{item.name}</h4>
+                                                        <div className="item">
+                                                            <h4>{item.name}</h4>
+                                                            <p>Who: {item.user_id.name}</p>
+                                                        </div>
                                                     </div>
                                                 )}
                                             </Draggable>
@@ -114,7 +118,10 @@ const DragDropContexComponent = ({tasks, getTasks, project}: any) => {
                                                         {...provided.dragHandleProps}
                                                         className='dnd-column-item'
                                                     >
-                                                        <h4>{item.name}</h4>
+                                                        <div className="item">
+                                                            <h4>{item.name}</h4>
+                                                            <p>Who: {item.user_id.name}</p>
+                                                        </div>
                                                     </div>
                                                 )}
                                             </Draggable>
@@ -146,7 +153,10 @@ const DragDropContexComponent = ({tasks, getTasks, project}: any) => {
                                                         {...provided.dragHandleProps}
                                                         className='dnd-column-item'
                                                     >
-                                                        <h4>{item.name}</h4>
+                                                        <div className="item">
+                                                            <h4>{item.name}</h4>
+                                                            <p>Who: {item.user_id.name}</p>
+                                                        </div>
                                                     </div>
                                                 )}
                                             </Draggable>
