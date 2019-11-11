@@ -1,8 +1,8 @@
-import MessageContainer from '@pages/project/components/messager';
 import { Spin } from 'antd';
 import { useEffect } from 'react';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import MessageContainer from '../../pages/project/components/messager';
 import DragDropContexComponent from '../../pages/project/components/DragDropContext';
 import { projectFetchData } from '../../store/actions/project';
 import HeaderProject from './components/header';

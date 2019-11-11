@@ -36,7 +36,6 @@ const CharComponent = ({ projects, tasks }: IData) => {
         },
         series: [{
             name: 'Projects',
-            colorByPoint: true,
             type: 'pie',
             data: [{
                 name: 'Projects',
