@@ -22,7 +22,7 @@ const useGetMessages = () => {
             let message = JSON.parse(event.data);
             setMessages([...messages, message]);
         };
-    }, []);
+    }, [messages]);
 
     return [messages];
 };
