@@ -2,15 +2,22 @@ import { Spin } from 'antd';
 import { useEffect } from 'react';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { closeSocket, connectSocket } from '../../websocket';
 import MessageContainer from '../../pages/project/components/messager';
 import DragDropContexComponent from '../../pages/project/components/DragDropContext';
 import { projectFetchData } from '../../store/actions/project';
 import HeaderProject from './components/header';
 
+
 const ProjectPage = ({ path, getProjectData, id, project, isLoading }: any) => {
 
     useEffect(() => {
+        connectSocket(id);
         getProjectData(id);
+
+        return () => {
+            closeSocket()
+        }
     }, []);
 
     if (isLoading) {
