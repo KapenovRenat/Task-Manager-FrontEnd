@@ -3,15 +3,15 @@ import { useGetMessages } from '../../../../websocket';
 import MessageItem from '../../../../pages/project/components/message-item';
 
 const MessageWindow = () => {
-    const data = useGetMessages();
+    const [messages, typing] = useGetMessages();
     return (
         <div className="messages-window">
             {
-                data.messages.map((item: any, index: number) =>
+                messages.map((item: any, index: number) =>
                     <MessageItem message = {item} key = {index}/>
                 )
             }
-            {(data as any).typing.email && <p className='messages-window-typing'>{(data as any).typing.email} is typing</p>}
+            {(typing as any).typing.email && <p className='messages-window-typing'>{(typing as any).typing.email} is typing</p>}
         </div>
     );
 }

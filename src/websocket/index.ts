@@ -14,7 +14,7 @@ const sendMessage = (message: string) => {
     socket.send(message);
 };
 
-const useGetMessages = () => {
+const useGetMessages = (): [any[], {}]  => {
     let [messages, setMessages] = useState([]);
     let [typing, setTyping] = useState({});
 
@@ -30,7 +30,7 @@ const useGetMessages = () => {
         };
     }, [messages]);
 
-    return {messages, typing};
+    return [messages, typing];
 };
 
 export {
