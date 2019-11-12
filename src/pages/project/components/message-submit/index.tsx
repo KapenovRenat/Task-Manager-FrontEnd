@@ -12,7 +12,7 @@ interface ISubmit {
 
 const MessageSubmit = ({user}: ISubmit) => {
     const projectPageContext: any = useContext(ProjectPageContext);
-    const [message, setMessage] = useState<string>();
+    const [message, setMessage] = useState<string>('');
 
     const submit = (e: any) => {
         e.preventDefault();
@@ -21,20 +21,29 @@ const MessageSubmit = ({user}: ISubmit) => {
            let body:string = JSON.stringify({
                message,
                email,
-               project_id: projectPageContext.project_id
+               project_id: projectPageContext.project_id,
+               type: 1
            });
            sendMessage(body);
+           setMessage('');
         }
     };
 
     const onChangeText = (e: any) => {
         setMessage(e.target.value);
+        let { email } = user;
+        let body:string = JSON.stringify({
+            email,
+            project_id: projectPageContext.project_id,
+            type: 2
+        });
+        sendMessage(body);
     };
 
     return (
         <div className="messages-submit">
             <form onSubmit={submit}>
-                <Input size="large" placeholder="Send Message" onChange={onChangeText} />
+                <Input size="large" placeholder="Send Message" onChange={onChangeText} value={message}/>
                 <Button size="large" type="primary" htmlType='submit'>Send</Button>
             </form>
         </div>

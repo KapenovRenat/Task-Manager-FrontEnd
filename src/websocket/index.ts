@@ -16,15 +16,21 @@ const sendMessage = (message: string) => {
 
 const useGetMessages = () => {
     let [messages, setMessages] = useState([]);
+    let [typing, setTyping] = useState({});
 
     useEffect(() => {
         socket.onmessage = function(event: any) {
             let message = JSON.parse(event.data);
-            setMessages([...messages, message]);
+            if (message.type === 1) {
+                setMessages([...messages, message]);
+                setTyping({})
+            } else {
+                setTyping(message)
+            }
         };
     }, [messages]);
 
-    return [messages];
+    return {messages, typing};
 };
 
 export {
