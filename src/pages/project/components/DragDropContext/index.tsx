@@ -19,8 +19,6 @@ const DragDropContexComponent = ({tasks, getTasks, project}: any) => {
 
     const onDragEnd = useCallback(async (e: any) => {
         const { destination,  draggableId, source } = e;
-        // const task = tasks.find((item: any) => item._id === draggableId);
-        // console.log(task);
         if (destination.droppableId !== source.droppableId) {
             if (destination.droppableId === 'doing') {
                 try {

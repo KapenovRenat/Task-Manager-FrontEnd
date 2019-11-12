@@ -16,7 +16,7 @@ const MessageSubmit = ({user}: ISubmit) => {
 
     const submit = (e: any) => {
         e.preventDefault();
-       if (message){
+        if (message){
            let { email } = user;
            let body:string = JSON.stringify({
                message,
@@ -24,8 +24,7 @@ const MessageSubmit = ({user}: ISubmit) => {
                project_id: projectPageContext.project_id
            });
            sendMessage(body);
-           setMessage('');
-       }
+        }
     };
 
     const onChangeText = (e: any) => {
