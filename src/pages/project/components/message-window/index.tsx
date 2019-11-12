@@ -7,11 +7,10 @@ const MessageWindow = () => {
 
     return (
         <div className="messages-window">
-            {console.log(messages)}
             {
-                messages && messages.map((item: any, index: number) => {
+                messages.map((item: any, index: number) =>
                     <MessageItem message = {item} key = {index}/>
-                })
+                )
             }
         </div>
     );
