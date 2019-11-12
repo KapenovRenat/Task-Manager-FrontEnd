@@ -1,5 +1,7 @@
 .messages {padding: 0px 20px; margin-top: 20px;
-  &-submit {display: flex;align-items: center; margin-top: 20px}
+  &-submit {
+    form {display: flex;align-items: center; margin-top: 20px}
+  }
 
   &-window {width: 100%; background: #e4e4e4;height: 400px;
     overflow: hidden;overflow-y: scroll;padding: 20px; border-radius: 10px;

@@ -14,14 +14,18 @@ const MessageSubmit = ({user}: ISubmit) => {
     const projectPageContext: any = useContext(ProjectPageContext);
     const [message, setMessage] = useState<string>();
 
-    const submit = () => {
-        let { email } = user;
-        let body:string = JSON.stringify({
-            message,
-            email,
-            project_id: projectPageContext.project_id
-        });
-        sendMessage(body);
+    const submit = (e: any) => {
+        e.preventDefault();
+       if (message){
+           let { email } = user;
+           let body:string = JSON.stringify({
+               message,
+               email,
+               project_id: projectPageContext.project_id
+           });
+           sendMessage(body);
+           setMessage('');
+       }
     };
 
     const onChangeText = (e: any) => {
@@ -30,8 +34,10 @@ const MessageSubmit = ({user}: ISubmit) => {
 
     return (
         <div className="messages-submit">
-            <Input size="large" placeholder="Send Message" onChange={onChangeText}/>
-            <Button size="large" type="primary" onClick={submit}>Send</Button>
+            <form onSubmit={submit}>
+                <Input size="large" placeholder="Send Message" onChange={onChangeText} />
+                <Button size="large" type="primary" htmlType='submit'>Send</Button>
+            </form>
         </div>
     );
 }
