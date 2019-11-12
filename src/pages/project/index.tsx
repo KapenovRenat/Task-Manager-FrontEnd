@@ -8,6 +8,7 @@ import DragDropContexComponent from '../../pages/project/components/DragDropCont
 import { projectFetchData } from '../../store/actions/project';
 import HeaderProject from './components/header';
 
+export const ProjectPageContext = React.createContext({});
 
 const ProjectPage = ({ path, getProjectData, id, project, isLoading }: any) => {
 
@@ -31,7 +32,9 @@ const ProjectPage = ({ path, getProjectData, id, project, isLoading }: any) => {
             <div className='page project'>
                 <HeaderProject project={project}/>
                 <DragDropContexComponent project = {project}/>
-                <MessageContainer />
+                <ProjectPageContext.Provider value = {{project_id: id}}>
+                    <MessageContainer />
+                </ProjectPageContext.Provider>
             </div>
         );
     }
