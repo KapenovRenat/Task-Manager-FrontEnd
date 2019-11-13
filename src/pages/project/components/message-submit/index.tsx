@@ -31,13 +31,6 @@ const MessageSubmit = ({user}: ISubmit) => {
 
     const onChangeText = (e: any) => {
         setMessage(e.target.value);
-        let { email } = user;
-        let body:string = JSON.stringify({
-            email,
-            project_id: projectPageContext.project_id,
-            type: 2
-        });
-        sendMessage(body);
     };
 
     return (

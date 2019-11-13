@@ -19,9 +19,14 @@ const deletProject = async (id: string) => {
     return axios.delete(`/api/project/${id}`);
 };
 
+const getMessagesInDB = async (id: string) => {
+    return axios.get(`/api/project/messages/${id}`);
+};
+
 export {
     getProjects,
     createProject,
     getProject,
-    deletProject
+    deletProject,
+    getMessagesInDB
 }
