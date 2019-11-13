@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react';
 
+interface DataMessage {
+    message?: string;
+    email?: string;
+    project_id?: string,
+    type?: number;
+}
+
 let socket: any;
 
 const connectSocket = (id_project: string) => {
@@ -14,9 +21,9 @@ const sendMessage = (message: string) => {
     socket.send(message);
 };
 
-const useGetMessages = (): [any[], {}]  => {
-    let [messages, setMessages] = useState([]);
-    let [typing, setTyping] = useState({});
+const useGetMessages = (): [DataMessage[], {}]  => {
+    let [messages, setMessages] = useState<DataMessage[]>([]);
+    let [typing, setTyping] = useState<DataMessage>({});
 
     useEffect(() => {
         socket.onmessage = function(event: any) {
